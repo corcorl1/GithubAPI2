@@ -35,3 +35,10 @@ gitDF[gitDF$full_name == "jtleek/datasharing", "created_at"]
 #Connecting to my Plotly account 
 Sys.setenv("plotly_username"="corcorl1")
 Sys.setenv("plotly_api_key"="K7LVLU895AM0p8DNYPBy")
+
+getFollowers <- function(corcorl1)
+{
+  URL <- paste("https://api.github.com/users/", corcorl1 , "/followers", sep="")
+  followers = fromJSON(URL)
+  return (followers$login)
+}
