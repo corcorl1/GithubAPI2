@@ -31,3 +31,7 @@ gitDF = jsonlite::fromJSON(jsonlite::toJSON(json1))
 
 # Subset data.frame
 gitDF[gitDF$full_name == "jtleek/datasharing", "created_at"] 
+
+#Connecting to my Plotly account 
+Sys.setenv("plotly_username"="corcorl1")
+Sys.setenv("plotly_api_key"="K7LVLU895AM0p8DNYPBy")
