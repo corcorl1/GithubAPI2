@@ -4,6 +4,15 @@ library(jsonlite)
 library(httpuv)
 #install.packages("httr")
 library(httr)
+install.packages("plotly")
+library(plotly)
+install.packages("devtools")
+library(devtools)
+install.packages("magrittr")
+library(magrittr)
+install.packages("dplyr")
+library(dplyr)
+detach(package:plotly, unload=TRUE)
 
 # Can be github, linkedin etc depending on application
 oauth_endpoints("github")
@@ -42,3 +51,20 @@ getFollowers <- function(corcorl1)
   followers = fromJSON(URL)
   return (followers$login)
 }
+
+getFollowing <- function(corcorl1)
+{
+  URL <- paste("https://api.github.com/users/", corcorl1 , "/following", sep="")
+  followers = fromJSON(URL)
+  return (followers$login)
+}
+
+#Function that returns a list of the provided user's repositories
+getRepositories <- function(corcorl1)
+{
+  URL <- paste("https://api.github.com/users/", corcorl1 , "/repos", sep="")
+  repos = fromJSON(URL) 
+  repos$committs
+  return (repos$name)
+}
+
