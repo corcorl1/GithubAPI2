@@ -199,3 +199,19 @@ for (i in 1:length(users))
   next
 }
 
+#Puts 10 most popular languages in table 
+allLanguages = sort(table(languages), increasing=TRUE)
+top10Languages = allLanguages[(length(allLanguages)-9):length(allLanguages)]
+
+#converts to dataframe
+languageDF = as.data.frame(top10Languages)
+
+#Plot the data frame of languages
+plot3 = plot_ly(data = languageDF, x = languageDF$languages, y = languageDF$Freq, type = "bar")
+plot3
+
+Sys.setenv("plotly_username"="corcorl1")
+Sys.setenv("plotly_api_key"="K7LVLU895AM0p8DNYPBy")
+api_create(plot3, filename = "10 Most Popular Languages")
+
+
