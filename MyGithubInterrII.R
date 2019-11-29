@@ -156,4 +156,18 @@ for(i in 1:length(user_ids))
   next
 }
 
+Sys.setenv("plotly_username"="corcorl1")
+Sys.setenv("plotly_api_key"="K7LVLU895AM0p8DNYPBy")
+
+plot1 = plot_ly(data = usersDB, x = ~repos, y = ~followers, text = ~paste("Followers: ", followers, "<br>Repositories: ", repos, "<br>Date Created:", dateCreated), color = ~dateCreated)
+plot1
+
+plot2 = plot_ly(data = usersDB, x = ~following, y = ~followers, text = ~paste("Followers: ", followers, "<br>Following: ", following), color = ~dateCreated)
+plot2
+
+api_create(plot1, filename = "Repositories vs Followers")
+api_create(plot2, filename = "Following vs Followers")
+
+#below code is to graph the top 10 most popular languages used by the same 250 users.
+languages = c()
 
