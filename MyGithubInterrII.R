@@ -1,4 +1,4 @@
-#install.packages("jsonlite")
+install.packages("jsonlite")
 library(jsonlite)
 #install.packages("httpuv")
 library(httpuv)
@@ -41,9 +41,19 @@ gitDF = jsonlite::fromJSON(jsonlite::toJSON(json1))
 # Subset data.frame
 gitDF[gitDF$full_name == "jtleek/datasharing", "created_at"] 
 
+
+#Interrogate the Github API to extract data from my own github account
+
 #Connecting to my Plotly account 
 Sys.setenv("plotly_username"="corcorl1")
 Sys.setenv("plotly_api_key"="K7LVLU895AM0p8DNYPBy")
+
+ownData = fromJSON("https://api.github.com/users/corcorl1")
+
+ownData$followers
+
+ownFollowers = fromJSON("https://api.github.com/users/corcorl1/followers")
+
 
 getFollowers <- function(corcorl1)
 {
