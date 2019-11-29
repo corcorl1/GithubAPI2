@@ -76,4 +76,26 @@ berryd1Data$followers
 berryd1Data$following
 berryd1Data$public_repos
 
+#decided to use the account of Corentin Jermine was in November 2019 Githubs most active member,
+#felt information from his account would produce much more interesting graphs than my own information 
+#user => fabpot 
+
+ownData = GET("https://api.github.com/users/CorentinJ/followers?per_page=100;", gtoken)
+stop_for_status(ownData)
+extract = content(ownData)
+#converts into dataframe
+githubDB = jsonlite::fromJSON(jsonlite::toJSON(extract))
+githubDB$login
+
+id = githubDB$login
+user_ids = c(id)
+
+users = c()
+usersDB = data.frame(
+  username = integer(),
+  following = integer(),
+  followers = integer(),
+  repos = integer(),
+  dateCreated = integer()
+)
 
