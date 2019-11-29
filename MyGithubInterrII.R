@@ -64,7 +64,7 @@ following$login
 
 ownData$public_repos
 
-
+repos = fromJSON("https://api.github.com/users/corcorl1/repos")
 
 
 
