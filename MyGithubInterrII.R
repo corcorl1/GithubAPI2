@@ -65,7 +65,15 @@ following$login
 ownData$public_repos
 
 repos = fromJSON("https://api.github.com/users/corcorl1/repos")
+repos$name
+repos$created_at
+repos$full_name
 
+ownData$bio
 
+berryd1Data = fromJSON("https://api.github.com/users/berryd1")
+berryd1Data$followers
+berryd1Data$following
+berryd1Data$public_repos
 
 
