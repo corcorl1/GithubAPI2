@@ -12,7 +12,7 @@ install.packages("magrittr")
 library(magrittr)
 install.packages("dplyr")
 library(dplyr)
-detach(package:plotly, unload=TRUE)
+#detach(package:plotly, unload=TRUE)
 
 # Can be github, linkedin etc depending on application
 oauth_endpoints("github")
@@ -27,7 +27,7 @@ github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
 
 # Use API
 gtoken <- config(token = github_token)
-req <- GET("https://api.github.com/users/corcorl1/repos", gtoken)
+req <- GET("https://api.github.com/users/jtleek/repos", gtoken)
 
 # Take action on http error
 stop_for_status(req)
@@ -54,27 +54,18 @@ ownData$followers
 
 ownFollowers = fromJSON("https://api.github.com/users/corcorl1/followers")
 
+followers$login
 
-getFollowers <- function(corcorl1)
-{
-  URL <- paste("https://api.github.com/users/", corcorl1 , "/followers", sep="")
-  followers = fromJSON(URL)
-  return (followers$login)
-}
+ownData$following
 
-getFollowing <- function(corcorl1)
-{
-  URL <- paste("https://api.github.com/users/", corcorl1 , "/following", sep="")
-  followers = fromJSON(URL)
-  return (followers$login)
-}
+following = fromJSON("https://api.github.com/users/corcorl1/following")
 
-#Function that returns a list of the provided user's repositories
-getRepositories <- function(corcorl1)
-{
-  URL <- paste("https://api.github.com/users/", corcorl1 , "/repos", sep="")
-  repos = fromJSON(URL) 
-  repos$committs
-  return (repos$name)
-}
+following$login
+
+ownData$public_repos
+
+
+
+
+
 
